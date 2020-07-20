@@ -45,8 +45,7 @@ def set(name, edit, value):
         value = edited.rstrip() if edited is not None else old
     else:
         if value is None:
-            click.echo('No value provided')
-            return
+            value = click.prompt('Value')
 
     items[name] = value
     item.save(items)
