@@ -26,5 +26,17 @@ def get(name):
 
     click.echo(items[name])
 
+@cli.command()
+@click.argument('name')
+@click.argument('value')
+def set(name, value):
+    """Store a value in an item"""
+
+    items = item.load()
+    old = items[name] if name in items else None
+    items[name] = value
+    item.save(items)
+    print("{} '{}'".format('Added' if old is None else ('Updated' if value != old else 'No changes made to'), name))
+
 if __name__ == '__main__':
     cli()
