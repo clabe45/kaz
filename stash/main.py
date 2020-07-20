@@ -4,7 +4,7 @@ import item
 
 @click.group()
 def cli():
-    """Simple store for text items"""
+    """Simple local storage cli"""
 
     pass
 
