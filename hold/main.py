@@ -14,8 +14,11 @@ def ls():
 
     click.echo('\n'.join(item.load().keys()))
 
+def autocomplete_name(ctx, args, incomplete):
+    return [i for i in item.load() if i.startswith(incomplete)]
+
 @cli.command()
-@click.argument('name')
+@click.argument('name', autocompletion=autocomplete_name)
 def get(name):
     """Print the value of an item"""
 
@@ -27,7 +30,7 @@ def get(name):
     click.echo(items[name])
 
 @cli.command()
-@click.argument('name')
+@click.argument('name', autocompletion=autocomplete_name)
 @click.option('--edit/--no-edit', '-e/-E', default=False, help='Open the item in the default text editor')
 @click.argument('value', required=False)
 def set(name, edit, value):
@@ -52,7 +55,7 @@ def set(name, edit, value):
     print("{} '{}'".format('Added' if old is None else ('Updated' if value != old else 'No changes made to'), name))
 
 @cli.command()
-@click.argument('name')
+@click.argument('name', autocompletion=autocomplete_name)
 def remove(name):
     """Remove an item"""
 
