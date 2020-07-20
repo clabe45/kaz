@@ -24,7 +24,7 @@ def get(name):
 
     items = item.load()
     if not name in items:
-        click.echo('No such item: {}'.format(name))
+        click.echo('No such item: {}'.format(name), err=True)
         return
 
     click.echo(items[name])
@@ -41,7 +41,7 @@ def set(name, edit, value):
 
     if edit:
         if value is not None:
-            click.echo('Value cannot be present while --editor is set.')
+            click.echo('Value cannot be present while --editor is set.', err=True)
             return
         edited = click.edit(text=old)
         # click.edit() returns None when no changes were made, so account for that
@@ -61,7 +61,7 @@ def remove(name):
 
     items = item.load()
     if not name in items:
-        click.echo('No such item: {}'.format(name))
+        click.echo('No such item: {}'.format(name), err=True)
         return
 
     del items[name]
