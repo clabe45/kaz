@@ -28,12 +28,26 @@ def get(name):
 
 @cli.command()
 @click.argument('name')
-@click.argument('value')
-def set(name, value):
+@click.option('--edit/--no-edit', '-e/-E', default=False, help='Open the item in the default text editor')
+@click.argument('value', required=False)
+def set(name, edit, value):
     """Store a value in an item"""
 
     items = item.load()
     old = items[name] if name in items else None
+
+    if edit:
+        if value is not None:
+            click.echo('Value cannot be present while --editor is set.')
+            return
+        edited = click.edit(text=old)
+        # click.edit() returns None when no changes were made, so account for that
+        value = edited.rstrip() if edited is not None else old
+    else:
+        if value is None:
+            click.echo('No value provided')
+            return
+
     items[name] = value
     item.save(items)
     print("{} '{}'".format('Added' if old is None else ('Updated' if value != old else 'No changes made to'), name))
