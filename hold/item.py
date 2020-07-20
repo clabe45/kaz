@@ -1,8 +1,8 @@
 from os import mkdir
-from os.path import join, expanduser, exists
+from os.path import join, exists
 import json
 
-hold_home = expanduser(join('~', '.hold'))
+from hold.constants import hold_home
 
 def load():
     if not exists(hold_home):
