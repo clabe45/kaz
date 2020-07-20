@@ -52,5 +52,13 @@ def remove(name):
     item.save(items)
     click.echo("Removed '{}'".format(name))
 
+@cli.command()
+def clear():
+    """Remove all items"""
+
+    count = len(item.load())
+    item.save({})
+    click.echo('Removed {} item{}'.format(count, '' if count == 1 else 's'))
+
 if __name__ == '__main__':
     cli()
