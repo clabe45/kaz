@@ -38,5 +38,19 @@ def set(name, value):
     item.save(items)
     print("{} '{}'".format('Added' if old is None else ('Updated' if value != old else 'No changes made to'), name))
 
+@cli.command()
+@click.argument('name')
+def remove(name):
+    """Remove an item"""
+
+    items = item.load()
+    if not name in items:
+        click.echo('No such item: {}'.format(name))
+        return
+
+    del items[name]
+    item.save(items)
+    click.echo("Removed '{}'".format(name))
+
 if __name__ == '__main__':
     cli()
