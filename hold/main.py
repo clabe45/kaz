@@ -1,6 +1,6 @@
 import click
 
-import item
+from hold import item
 
 @click.group()
 def cli():
