@@ -13,7 +13,7 @@ def cli():
 
 @cli.command(name='list')
 def ls():
-    """Show all stashed items"""
+    """Show all held items."""
 
     click.echo('\n'.join(['{}{}'.format(name, ' (binary)' if type(value) is bytes else '') for name, value in item.load().items()]))
 
@@ -23,7 +23,7 @@ def autocomplete_name(ctx, args, incomplete):
 @cli.command()
 @click.argument('name', autocompletion=autocomplete_name)
 def get(name):
-    """Print the value of an item"""
+    """Print the value of an item."""
 
     items = item.load()
     if not name in items:
@@ -38,7 +38,7 @@ def get(name):
 @click.argument('name', autocompletion=autocomplete_name)
 @click.argument('value', required=False)
 def set(name, binary, edit, value):
-    """Store a value in an item"""
+    """Store a value in an item."""
 
     items = item.load()
     original_items = dict(items)
@@ -74,7 +74,7 @@ def set(name, binary, edit, value):
 @cli.command()
 @click.argument('name', autocompletion=autocomplete_name)
 def remove(name):
-    """Remove an item"""
+    """Remove an item."""
 
     items = item.load()
     original_items = dict(items)
@@ -88,7 +88,7 @@ def remove(name):
 
 @cli.command()
 def clear():
-    """Remove all items"""
+    """Remove all items."""
 
     original_items = item.load()
     count = len(original_items)
