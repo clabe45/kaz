@@ -4,11 +4,12 @@ import click
 from colorama import Fore, Style
 
 from hold import item
-from hold.constants import hold_home
+from hold.constants import hold_home, VERSION
 from hold.util import echo_error
 
 @click.group(invoke_without_command=True)
 @click.help_option('-h', '--help')
+@click.version_option(VERSION, '-v', '--version', message='%(prog)s v%(version)s')
 @click.pass_context
 def cli(ctx):
     """Simple local storage cli"""

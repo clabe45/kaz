@@ -3,6 +3,7 @@
 ## [Unreleased]
 ### Added
 - Color in output.
+- --version option.
 
 ### Changed
 - Running `hold` with no subcommands now lists the held items.
