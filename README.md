@@ -53,8 +53,8 @@ To enable autocompletion, source the script in the [autocomplete][autocomplete] 
 For bash, this would look like:
 
 ```sh
-wget https://raw.githubusercontent.com/clabe45/kaz/master/autocomplete/kaz-completion-bash.sh
-. kaz-completion-bash.sh
+wget https://raw.githubusercontent.com/clabe45/kaz/master/autocomplete/kaz-autocomplete-bash.sh
+. kaz-autocomplete-bash.sh
 ```
 
 You may want to add the last command to your ~/.bashrc.
