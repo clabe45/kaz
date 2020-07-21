@@ -20,7 +20,11 @@ def cli(ctx):
 def ls():
     """Show all held items."""
 
-    click.echo('\n'.join(['{}{}'.format(name, ' (binary)' if type(value) is bytes else '') for name, value in item.load().items()]))
+    items = item.load()
+    if items:
+        click.echo('\n'.join(['{}{}'.format(name, ' (binary)' if type(value) is bytes else '') for name, value in items.items()]))
+    else:
+        click.echo('No items')
 
 def autocomplete_name(ctx, args, incomplete):
     return [name for name in item.load().keys() if name.startswith(incomplete)]
