@@ -2,7 +2,7 @@
 
 ## [Unreleased]
 ### Changed
-- Rename project to 'pallet'.
+- Rename project to 'kaz'.
 
 ## [0.3.0] - 2020-07-20
 ### Added
@@ -10,7 +10,7 @@
 - --version option.
 
 ### Changed
-- Running `hold` with no subcommands now lists the held items.
+- Running with no subcommands now lists the items.
 
 ### Removed
 - Remove --binary flag; binary items are automatically detected.
@@ -41,7 +41,7 @@
 - `remove` command for deleting an item.
 - `clear` command for deleting all items.
 
-[Unreleased]: https://github.com/clabe45/pallet/compare/v0.3.0...HEAD
-[0.3.0]: https://github.com/clabe45/pallet/compare/v0.2.0...v0.3.0
-[0.2.0]: https://github.com/clabe45/pallet/compare/v0.1.0...v0.2.0
-[0.1.0]: https://github.com/clabe45/pallet/releases/tag/v0.1
+[Unreleased]: https://github.com/clabe45/kaz/compare/v0.3.0...HEAD
+[0.3.0]: https://github.com/clabe45/kaz/compare/v0.2.0...v0.3.0
+[0.2.0]: https://github.com/clabe45/kaz/compare/v0.1.0...v0.2.0
+[0.1.0]: https://github.com/clabe45/kaz/releases/tag/v0.1

@@ -4,9 +4,9 @@ import sys
 import click
 from colorama import Fore, Style
 
-from pallet import item
-from pallet.constants import pallet_home, VERSION
-from pallet.util import echo_error
+from kaz import item
+from kaz.constants import kaz_home, VERSION
+from kaz.util import echo_error
 
 @click.group(invoke_without_command=True)
 @click.help_option('-h', '--help')

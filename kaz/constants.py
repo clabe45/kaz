@@ -1,4 +1,4 @@
 from os.path import expanduser, join
 
-pallet_home = expanduser(join('~', '.pallet'))
+kaz_home = expanduser(join('~', '.kaz'))
 VERSION='0.3.0'
