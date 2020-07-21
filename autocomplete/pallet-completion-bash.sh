@@ -1,13 +1,13 @@
-_hold_completion() {
+_pallet_completion() {
     local IFS=$'
 '
     COMPREPLY=( $( env COMP_WORDS="${COMP_WORDS[*]}" \
                    COMP_CWORD=$COMP_CWORD \
-                   _HOLD_COMPLETE=complete $1 ) )
+                   _PALLET_COMPLETE=complete $1 ) )
     return 0
 }
 
-_hold_completionetup() {
+_pallet_completionetup() {
     local COMPLETION_OPTIONS=""
     local BASH_VERSION_ARR=(${BASH_VERSION//./ })
     # Only BASH version 4.4 and later have the nosort option.
@@ -15,7 +15,7 @@ _hold_completionetup() {
         COMPLETION_OPTIONS="-o nosort"
     fi
 
-    complete $COMPLETION_OPTIONS -F _hold_completion hold
+    complete $COMPLETION_OPTIONS -F _pallet_completion pallet
 }
 
-_hold_completionetup;
+_pallet_completionetup;
