@@ -22,9 +22,9 @@ hold set license < license.txt
 hold get license > license2.txt
 ```
 
-and store binary blobs:
+which also works with binary blobs:
 ```sh
-hold set --binary "profile pic" < profile-picture.png
+hold set "profile pic" < profile-picture.png
 ```
 
 ## Commands
