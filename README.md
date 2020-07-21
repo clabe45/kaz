@@ -1,6 +1,6 @@
 # Hold
 
-Hold is a minimalistic local storage cli. You can easily store binary and text items and retrieve them later.
+This cli lets you easily store binary and text items and retrieve them later.
 
 ## Installation
 
@@ -16,7 +16,7 @@ hold set key value
 hold get key # value
 ```
 
-You can also use stdin:
+You can also use stdin and stdout:
 ```sh
 hold set license < license.txt
 hold get license > license2.txt
