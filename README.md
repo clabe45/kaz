@@ -46,6 +46,19 @@ Commands:
   set     Store a value in an item
 ```
 
+## Autocompletion
+
+To enable autocompletion, source the script in the [autocomplete][autocomplete] directory that corresponds to your shell. Currently bash, fish and zsh are supported.
+
+For bash, this would look like:
+
+```sh
+wget https://raw.githubusercontent.com/clabe45/hold/master/autocomplete/hold-completion-bash.sh
+. hold-completion-bash.sh
+```
+
+You may want to add the last command to your ~/.bashrc.
+
 ## Contributing
 
 1. [Fork this repo!][fork]
@@ -57,6 +70,7 @@ Commands:
 6. Push: `git push origin FEATURE-BRANCH`
 7. Create a [new pull request][new pull request].
 
+[autocomplete]: https://github.com/clabe45/hold/tree/master/autocomplete
 [fork]: https://github.com/clabe45/hold/fork
 [pick an issue]: https://github.com/clabe45/hold/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22
 [open an issue]: https://github.com/clabe45/hold/issues/new
