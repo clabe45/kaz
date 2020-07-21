@@ -56,3 +56,7 @@ Commands:
   - Try to keep your commits [atomic](https://www.freshconsulting.com/atomic-commits/).
 6. Push: `git push origin FEATURE-BRANCH`
 7. Create a new pull request.
+
+## License
+
+Licensed under GNU GPL v3.
