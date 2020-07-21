@@ -1,7 +1,7 @@
 import os.path
 
 import click
-from colorama import Style
+from colorama import Fore, Style
 
 from hold import item
 from hold.constants import hold_home
@@ -24,9 +24,9 @@ def ls():
 
     items = item.load()
     if items:
-        click.echo('\n'.join(['{}{}'.format(name, ' (binary)' if type(value) is bytes else '') for name, value in items.items()]))
+        click.echo('\n'.join(['{}{}'.format(name, Style.DIM + ' (binary)' + Style.NORMAL if type(value) is bytes else '') for name, value in items.items()]))
     else:
-        click.echo('No items')
+        click.echo(Style.DIM + 'No items' + Style.NORMAL)
 
 def autocomplete_name(ctx, args, incomplete):
     return [name for name in item.load().keys() if name.startswith(incomplete)]
@@ -82,7 +82,13 @@ def set(name, binary, edit, value):
 
     items[name] = value
     item.save(items, original_items)
-    print("{} '{}'".format('Added' if old is None else ('Updated' if value != old else 'No changes made to'), name))
+    if old is None:
+        click.echo(Fore.GREEN + "Added '{}'".format(name) + Fore.RESET)
+    else:
+        if value == old:
+            click.echo(Style.DIM + 'Nothing changed' + Style.NORMAL)
+        else:
+            click.echo(Fore.YELLOW + "Updated '{}'".format(name) + Fore.RESET)
 
 @cli.command()
 @click.help_option('-h', '--help')
@@ -98,11 +104,10 @@ def remove(name):
 
     del items[name]
     item.save(items, original_items)
-    click.echo("Removed '{}'".format(name))
+    click.echo(Fore.MAGENTA + "Removed '{}'".format(name) + Fore.RESET)
 
 @cli.command()
 @click.help_option('-h', '--help')
-
 def clear():
     """Remove all items."""
 
@@ -110,7 +115,7 @@ def clear():
     count = len(original_items)
     count = len(item.load())
     item.save({}, original_items)
-    click.echo('Removed {} item{}'.format(count, '' if count == 1 else 's'))
+    click.echo((Style.DIM if count == 0 else Fore.MAGENTA) + 'Removed {} item{}'.format(count, '' if count == 1 else 's') + Style.RESET_ALL)
 
 if __name__ == '__main__':
     cli()

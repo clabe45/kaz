@@ -1,6 +1,9 @@
 # CHANGELOG
 
 ## [Unreleased]
+### Added
+- Color in output.
+
 ### Changed
 - Running `hold` with no subcommands now lists the held items.
 
