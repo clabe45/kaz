@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## [Unreleased]
+### Fixed
+- Autocompletion for the --help option now works.
+- Help can also be displayed with -h.
+
 ## [0.2.0] - 2020-07-20
 ### Added
 - Binary item support.

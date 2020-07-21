@@ -6,12 +6,14 @@ from hold import item
 from hold.constants import hold_home
 
 @click.group()
+@click.help_option('-h', '--help')
 def cli():
     """Simple local storage cli"""
 
     pass
 
 @cli.command(name='list')
+@click.help_option('-h', '--help')
 def ls():
     """Show all held items."""
 
@@ -21,6 +23,7 @@ def autocomplete_name(ctx, args, incomplete):
     return [name for name in item.load().keys() if name.startswith(incomplete)]
 
 @cli.command()
+@click.help_option('-h', '--help')
 @click.argument('name', autocompletion=autocomplete_name)
 def get(name):
     """Print the value of an item."""
@@ -33,6 +36,7 @@ def get(name):
     click.echo(items[name])
 
 @cli.command()
+@click.help_option('-h', '--help')
 @click.option('--binary/--no-binary', '-b/-B', default=False, help='Accept binary data from stdin')
 @click.option('--edit/--no-edit', '-e/-E', default=False, help='Open the item in the default text editor')
 @click.argument('name', autocompletion=autocomplete_name)
@@ -72,6 +76,7 @@ def set(name, binary, edit, value):
     print("{} '{}'".format('Added' if old is None else ('Updated' if value != old else 'No changes made to'), name))
 
 @cli.command()
+@click.help_option('-h', '--help')
 @click.argument('name', autocompletion=autocomplete_name)
 def remove(name):
     """Remove an item."""
@@ -87,6 +92,8 @@ def remove(name):
     click.echo("Removed '{}'".format(name))
 
 @cli.command()
+@click.help_option('-h', '--help')
+
 def clear():
     """Remove all items."""
 
