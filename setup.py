@@ -3,7 +3,6 @@ from setuptools import setup, find_packages
 setup(
     name='hold',
     version='0.2',
-    description="A simple storage cli",
     packages=find_packages(),
     include_package_data=True,
     install_requires=['click'],
@@ -11,5 +10,12 @@ setup(
         [console_scripts]
         hold=hold.main:cli
     ''',
-    url='https://github.com/clabe45/hold'
+    # extra metadata
+    description='A simple storage cli',
+    keywords='storage cli',
+    url='https://github.com/clabe45/hold',
+    author='Caleb Sacks',
+    project_urls={
+        'Bug Tracker': 'https://github.com/clabe45/hold/issues'
+    }
 )
