@@ -1,7 +1,5 @@
 # Hold
 
-> Holds anything you would like
-
 Hold is a minimalistic local storage cli. You can easily store binary and text items and retrieve them later.
 
 ## Installation
