@@ -1,9 +1,11 @@
 import os.path
 
 import click
+from colorama import Style
 
 from hold import item
 from hold.constants import hold_home
+from hold.util import echo_error
 
 @click.group(invoke_without_command=True)
 @click.help_option('-h', '--help')
@@ -37,7 +39,7 @@ def get(name):
 
     items = item.load()
     if not name in items:
-        click.echo('No such item: {}'.format(name), err=True)
+        echo_error('No such item: {}'.format(name))
         return
 
     click.echo(items[name])
@@ -57,10 +59,10 @@ def set(name, binary, edit, value):
 
     if edit:
         if binary:
-            click.echo('Cannot edit a binary file', err=True)
+            echo_error('Cannot edit a binary file')
             return
         if value is not None:
-            click.echo('Value cannot be present while --editor is set.', err=True)
+            echo_error('Value cannot be present while --editor is set.')
             return
         edited = click.edit(text=old)
         # click.edit() returns None when no changes were made, so account for that
@@ -68,7 +70,7 @@ def set(name, binary, edit, value):
     else:
         if value is not None:
             if binary:
-                click.echo('Value cannot be present while --binary is set.', err=True)
+                echo_error('Value cannot be present while --binary is set.')
                 return
         else:
             if binary:
@@ -91,7 +93,7 @@ def remove(name):
     items = item.load()
     original_items = dict(items)
     if not name in items:
-        click.echo('No such item: {}'.format(name), err=True)
+        echo_error('No such item: {}'.format(name))
         return
 
     del items[name]
