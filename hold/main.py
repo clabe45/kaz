@@ -1,4 +1,5 @@
 import os.path
+import sys
 
 import click
 from colorama import Fore, Style
@@ -47,11 +48,10 @@ def get(name):
 
 @cli.command()
 @click.help_option('-h', '--help')
-@click.option('--binary/--no-binary', '-b/-B', default=False, help='Accept binary data from stdin')
 @click.option('--edit/--no-edit', '-e/-E', default=False, help='Open the item in the default text editor')
 @click.argument('name', autocompletion=autocomplete_name)
 @click.argument('value', required=False)
-def set(name, binary, edit, value):
+def set(name, edit, value):
     """Store a value in an item."""
 
     items = item.load()
@@ -59,9 +59,6 @@ def set(name, binary, edit, value):
     old = items[name] if name in items else None
 
     if edit:
-        if binary:
-            echo_error('Cannot edit a binary file')
-            return
         if value is not None:
             echo_error('Value cannot be present while --editor is set.')
             return
@@ -69,17 +66,9 @@ def set(name, binary, edit, value):
         # click.edit() returns None when no changes were made, so account for that
         value = edited.rstrip() if edited is not None else old
     else:
-        if value is not None:
-            if binary:
-                echo_error('Value cannot be present while --binary is set.')
-                return
-        else:
-            if binary:
-                click.echo('Value: ', nl=False)
-                stdin = click.get_binary_stream('stdin')
-                value = stdin.read()
-            else:
-                value = click.prompt('Value')
+        if value is None:
+            click.echo('Value: ', nl=False)
+            value = sys.stdin.buffer.read()
 
     items[name] = value
     item.save(items, original_items)

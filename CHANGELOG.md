@@ -8,6 +8,9 @@
 ### Changed
 - Running `hold` with no subcommands now lists the held items.
 
+### Removed
+- Remove --binary flag; binary items are automatically detected.
+
 ### Fixed
 - Autocompletion for the --help option now works.
 - Help can also be displayed with -h.
