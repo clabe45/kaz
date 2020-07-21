@@ -5,11 +5,14 @@ import click
 from hold import item
 from hold.constants import hold_home
 
-@click.group()
+@click.group(invoke_without_command=True)
 @click.help_option('-h', '--help')
-def cli():
+@click.pass_context
+def cli(ctx):
     """Simple local storage cli"""
 
+    if ctx.invoked_subcommand is None:
+        ctx.invoke(ls)
     pass
 
 @cli.command(name='list')

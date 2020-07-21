@@ -1,6 +1,9 @@
 # CHANGELOG
 
 ## [Unreleased]
+### Changed
+- Running `hold` with no subcommands now lists the held items.
+
 ### Fixed
 - Autocompletion for the --help option now works.
 - Help can also be displayed with -h.
