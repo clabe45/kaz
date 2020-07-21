@@ -48,14 +48,20 @@ Commands:
 
 ## Contributing
 
-1. Fork this repo!
+1. [Fork this repo!][fork]
 2. Clone: `git clone https://github.com/YOUR-USERNAME/hold.git`
-3. Pick an issue or open a new one if you have a feature idea.
+3. [Pick an issue][pick an issue] or [open a new one][open an issue] if you have a feature idea.
 4. Preferably check out a new feature branch: `git checkout -b feature/my-feature` (makes the PR process easier)
 5. Implement your change.
-  - Try to keep your commits [atomic](https://www.freshconsulting.com/atomic-commits/).
+  - Try to keep your commits [atomic][atomic commits].
 6. Push: `git push origin FEATURE-BRANCH`
-7. Create a new pull request.
+7. Create a [new pull request][new pull request].
+
+[fork]: https://github.com/clabe45/hold/fork
+[pick an issue]: https://github.com/clabe45/hold/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22
+[open an issue]: https://github.com/clabe45/hold/issues/new
+[atomic commits]: https://www.freshconsulting.com/atomic-commits/
+[new pull request]: https://github.com/clabe45/hold/compare
 
 ## License
 

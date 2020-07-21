@@ -10,5 +10,6 @@ setup(
     entry_points='''
         [console_scripts]
         hold=hold.main:cli
-    '''
+    ''',
+    url='https://github.com/clabe45/hold'
 )

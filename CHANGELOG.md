@@ -1,6 +1,6 @@
 # CHANGELOG
 
-## 0.2.0 - 2020-07-20
+## [0.2.0] - 2020-07-20
 ### Added
 - Binary item support.
 - Autocompletion support.
@@ -14,10 +14,14 @@
 ### Fixed
 - Error messages are now sent to stderr.
 
-## 0.1.0 - 2020-07-20
+## [0.1.0] - 2020-07-20
 ### Added
 - `list` command for viewing all items.
 - `get` command for showing the value of an item.
 - `set` command for storing a value in an item.
 - `remove` command for deleting an item.
 - `clear` command for deleting all items.
+
+[Unreleased]: https://github.com/clabe45/hold/compare/v0.2.0...HEAD
+[0.2.0]: https://github.com/clabe45/hold/compare/v0.1.0...v0.2.0
+[0.1.0]: https://github.com/clabe45/hold/releases/tag/v0.1

@@ -1,6 +1,6 @@
 [[source]]
 name = "hold"
-url = ""
+url = "https://github.com/clabe45/hold"
 verify_ssl = true
 
 [dev-packages]
