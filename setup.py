@@ -20,7 +20,7 @@ setup(
     description='A simple storage cli',
     long_description=long_description,
     long_description_content_type='text/markdown',
-    keywords='storage cli',
+    keywords='storage store storing data cli tool minimalistic',
     url='https://github.com/clabe45/kaz',
     author='Caleb Sacks',
     license='GPLv3',
