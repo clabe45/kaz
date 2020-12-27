@@ -18,5 +18,7 @@ colorama = "*"
 python_version = "3.7"
 
 [scripts]
+test = "python -m pytest"
+coverage = "python -m pytest --cov=kaz"
 package = "python setup.py sdist bdist_wheel"
 publish = "python -m twine upload dist/*"
