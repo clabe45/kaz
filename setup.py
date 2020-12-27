@@ -11,7 +11,7 @@ setup(
     version='0.3.0.post0',
     packages=find_packages(),
     include_package_data=True,
-    install_requires=['click'],
+    install_requires=['click', 'colorama'],
     entry_points='''
         [console_scripts]
         kaz=kaz.main:cli
