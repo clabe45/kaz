@@ -26,5 +26,17 @@ setup(
     license='GPLv3',
     project_urls={
         'Bug Tracker': 'https://github.com/clabe45/kaz/issues'
-    }
+    },
+    classifiers=[
+        'Development Status :: 4 - Beta',
+        'Environment :: Console',
+        'Intended Audience :: Developers',
+        'License :: OSI Approved :: GNU General Public License v3 (GPLv3)',
+        'Operating System :: MacOS :: MacOS X',
+        'Operating System :: Microsoft :: Windows',
+        'Operating System :: POSIX',
+        'Programming Language :: Python',
+        'Topic :: System',
+        'Topic :: Utilities'
+    ]
 )
