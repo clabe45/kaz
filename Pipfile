@@ -8,6 +8,7 @@ pytest = "*"
 twine = "*"
 setuptools = "*"
 wheel = "*"
+pytest-cov = "*"
 
 [packages]
 click = "*"
