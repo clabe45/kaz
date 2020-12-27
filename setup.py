@@ -8,7 +8,7 @@ with open(join(this_directory, 'README.md'), encoding='utf-8') as f:
 
 setup(
     name='kaz',
-    version='0.3.0.post0',
+    version='0.3.0.post1',
     packages=find_packages(),
     include_package_data=True,
     install_requires=['click', 'colorama'],
