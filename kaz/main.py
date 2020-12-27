@@ -6,7 +6,11 @@ from colorama import Fore, Style
 
 from kaz import item
 from kaz.constants import kaz_home, VERSION
+from kaz.search import search
 from kaz.util import echo_error
+
+def autocomplete_name(ctx, args, incomplete):
+    return [name for name in item.load().keys() if name.startswith(incomplete)]
 
 @click.group(invoke_without_command=True)
 @click.help_option('-h', '--help')
@@ -21,17 +25,21 @@ def cli(ctx):
 
 @cli.command(name='list')
 @click.help_option('-h', '--help')
-def ls():
+@click.argument('pattern', required=False, autocompletion=autocomplete_name)
+def ls(pattern=None):
     """Show all held items."""
 
     items = item.load()
     if items:
-        click.echo('\n'.join(['{}{}'.format(name, Style.DIM + ' (binary)' + Style.NORMAL if type(value) is bytes else '') for name, value in items.items()]))
+        if pattern is not None:
+            # Search for keys that match pattern
+            items = search(items, pattern)
+        lines = ['{}{}'.format(name, Style.DIM + ' (binary)' + Style.NORMAL if type(value) is bytes else '') for name, value in items.items()]
+        # If there are no lines, don't print newline
+        if len(lines) > 0:
+            click.echo('\n'.join(lines))
     else:
         click.echo(Style.DIM + 'No items' + Style.NORMAL)
-
-def autocomplete_name(ctx, args, incomplete):
-    return [name for name in item.load().keys() if name.startswith(incomplete)]
 
 @cli.command()
 @click.help_option('-h', '--help')

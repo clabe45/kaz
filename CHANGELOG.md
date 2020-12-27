@@ -1,6 +1,9 @@
 # CHANGELOG
 
 ## [Unreleased]
+### Added
+- Wildcard support (\*, ?, [abc]).
+
 ### Changed
 - Rename project to 'kaz'.
 
