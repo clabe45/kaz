@@ -35,6 +35,7 @@ def ls(pattern=None):
             # Search for keys that match pattern
             items = search(items, pattern)
         lines = ['{}{}'.format(name, Style.DIM + ' (binary)' + Style.NORMAL if type(value) is bytes else '') for name, value in items.items()]
+        lines.sort()
         # If there are no lines, don't print newline
         if len(lines) > 0:
             click.echo('\n'.join(lines))

@@ -3,6 +3,7 @@
 ## [Unreleased]
 ### Added
 - Wildcard support (\*, ?, [abc]).
+- `list` prints keys in alphabetical order.
 
 ### Changed
 - Rename project to 'kaz'.
