@@ -15,3 +15,7 @@ colorama = "*"
 
 [requires]
 python_version = "3.7"
+
+[scripts]
+package = "python setup.py sdist bdist_wheel"
+publish = "python -m twine upload dist/*"
