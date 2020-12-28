@@ -22,4 +22,4 @@ default_config.read(default_config_path)
 KEY_VALUE_SPACING = int(config['formatting'].get(
     'spacing',
     default_config['formatting']['spacing']))
-VERSION='0.3.0'
+VERSION='0.4.0'
