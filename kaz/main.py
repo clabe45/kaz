@@ -93,12 +93,12 @@ def set(name, edit, value):
     items[name] = value
     item.save(items, original_items)
     if old is None:
-        click.echo("Added '{}'".format(Fore.YELLOW + name + Fore.RESET))
+        click.echo("Added {} → {}".format(Fore.YELLOW + name + Fore.RESET, value))
     else:
         if value == old:
             click.echo(Style.DIM + 'Nothing changed' + Style.NORMAL)
         else:
-            click.echo("Updated '{}'".format(Fore.YELLOW + name + Fore.RESET))
+            click.echo("Updated {} → {}".format(Fore.YELLOW + name + Fore.RESET, value))
 
 @cli.command()
 @click.help_option('-h', '--help')
