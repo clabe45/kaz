@@ -31,11 +31,11 @@ def ls(pattern=None):
 
     items = item.load()
     if items:
-        if len(items) == 0:
-            return
         if pattern is not None:
             # Search for keys that match pattern
             items = search(items, pattern)
+        if len(items) == 0:
+            return
         max_len = max([len(key) for key in items])
         def format_name(name):
             return Fore.YELLOW + name + Fore.RESET
