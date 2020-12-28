@@ -102,19 +102,20 @@ def set(name, edit, value):
 
 @cli.command()
 @click.help_option('-h', '--help')
-@click.argument('name', autocompletion=autocomplete_name)
-def remove(name):
+@click.argument('pattern', autocompletion=autocomplete_name)
+def remove(pattern):
     """Remove an item."""
 
     items = item.load()
-    original_items = dict(items)
-    if not name in items:
-        echo_error('No such item: {}'.format(name))
+    to_remove = search(item.load(), pattern)
+    count = len(to_remove)
+    if count == 0:
+        echo_error('No items found')
         return
 
-    del items[name]
-    item.save(items, original_items)
-    click.echo("Removed '{}'".format(Fore.YELLOW + name + Fore.RESET))
+    new_items = { name: value for name, value in items.items() if not name in to_remove }
+    item.save(new_items, items)
+    click.echo('Removed {} item{}'.format(count, '' if count == 1 else 's') + Style.RESET_ALL)
 
 @cli.command()
 @click.help_option('-h', '--help')

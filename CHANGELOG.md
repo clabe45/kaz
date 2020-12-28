@@ -2,7 +2,7 @@
 
 ## [Unreleased]
 ### Added
-- Wildcard support (\*, ?, [abc]).
+- Wildcard support for `list` and `remove` (\*, ?, [abc]).
 - `list` prints keys in alphabetical order.
 
 ### Changed
