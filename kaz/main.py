@@ -87,7 +87,6 @@ def set(name, edit, value):
         value = edited.rstrip() if edited is not None else old
     else:
         if value is None:
-            click.echo('Value: ', nl=False)
             value = sys.stdin.buffer.read()
 
     items[name] = value
