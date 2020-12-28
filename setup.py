@@ -24,7 +24,6 @@ setup(
     keywords='storage store storing data cli tool minimalistic',
     url='https://github.com/clabe45/kaz',
     author='Caleb Sacks',
-    license='GPLv3',
     project_urls={
         'Bug Tracker': 'https://github.com/clabe45/kaz/issues'
     },
