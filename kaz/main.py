@@ -92,7 +92,8 @@ def set(name, edit, value):
     items[name] = value
     item.save(items, original_items)
     if old is None:
-        click.echo("Added {} → {}".format(Fore.YELLOW + name + Fore.RESET, value))
+        formatted_value = value if type(value) is str else (Style.DIM + "(binary)" + Style.RESET_ALL)
+        click.echo("Added {} → {}".format(Fore.YELLOW + name + Fore.RESET, formatted_value))
     else:
         if value == old:
             click.echo(Style.DIM + 'No changes made' + Style.NORMAL)
