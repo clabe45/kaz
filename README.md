@@ -22,7 +22,7 @@ kaz set license < license.txt
 kaz get license > license2.txt
 ```
 
-which also works with binary blobs:
+which works with binary files:
 ```sh
 kaz set "profile pic" < profile-picture.png
 ```
@@ -36,28 +36,28 @@ Usage: kaz [OPTIONS] COMMAND [ARGS]...
   Simple local storage cli
 
 Options:
-  --help  Show this message and exit.
+  -h, --help     Show this message and exit.
+  -v, --version  Show the version and exit.
 
 Commands:
-  clear   Remove all items
-  get     Print the value of an item
-  list    Show all stashed items
-  remove  Remove an item
-  set     Store a value in an item
+  get     Print the value of an item.
+  list    Show all items that match `pattern`.
+  remove  Remove an item.
+  set     Bind a name to a value.
 ```
 
 ## Autocompletion
 
-To enable autocompletion, source the script in the [autocomplete][autocomplete] directory that corresponds to your shell. Currently bash, fish and zsh are supported.
+To enable autocompletion, source the script in the [autocomplete][autocomplete] directory that corresponds to your terminal. Currently bash, fish and zsh are supported.
 
-For bash, this would look like:
+For bash, this would be
 
 ```sh
 wget https://raw.githubusercontent.com/clabe45/kaz/master/autocomplete/kaz-autocomplete-bash.sh
 . kaz-autocomplete-bash.sh
 ```
 
-You may want to add the last command to your ~/.bashrc.
+Add the second command to your ~/.bashrc to enable it automatically.
 
 ## Contributing
 
