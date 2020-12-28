@@ -12,7 +12,7 @@
 - Change color scheme.
 
 ### Removed
-- `clear` subcommand - use `kaz remove '*'` instead.
+- `clear` subcommand. Use `kaz remove '*'` instead.
 
 ## [0.3.0] - 2020-07-20
 ### Added
