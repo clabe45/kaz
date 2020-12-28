@@ -4,6 +4,7 @@
 ### Added
 - Wildcard support for `list` and `remove` (\*, ?, [abc]).
 - `list` prints keys in alphabetical order.
+- Config file support.
 
 ### Changed
 - Rename project to 'kaz'.

@@ -16,6 +16,7 @@ setup(
         [console_scripts]
         kaz=kaz.main:cli
     ''',
+    data_files=[('data', ['data/default_config'])],
     # extra metadata
     description='A simple storage cli',
     long_description=long_description,
