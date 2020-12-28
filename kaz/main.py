@@ -89,16 +89,27 @@ def set(name, edit, value):
         if value is None:
             value = sys.stdin.buffer.read()
 
+    # Modify items
     items[name] = value
     item.save(items, original_items)
+
+    # Format value
+    if type(value) is str:
+        if '\n' in value or '\r' in value:
+            formatted_value = Style.DIM + '(long text)' + Style.RESET_ALL
+        else:
+            formatted_value = value
+    else:
+        formatted_value = Style.DIM + "(binary)" + Style.RESET_ALL
+
+    # Output result
     if old is None:
-        formatted_value = value if type(value) is str else (Style.DIM + "(binary)" + Style.RESET_ALL)
         click.echo("Added {} → {}".format(Fore.YELLOW + name + Fore.RESET, formatted_value))
     else:
         if value == old:
             click.echo(Style.DIM + 'No changes made' + Style.NORMAL)
         else:
-            click.echo("Updated {} → {}".format(Fore.YELLOW + name + Fore.RESET, value))
+            click.echo("Updated {} → {}".format(Fore.YELLOW + name + Fore.RESET, formatted_value))
 
 @cli.command()
 @click.help_option('-h', '--help')
