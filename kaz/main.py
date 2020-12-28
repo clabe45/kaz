@@ -115,7 +115,7 @@ def remove(pattern):
 
     new_items = { name: value for name, value in items.items() if not name in to_remove }
     item.save(new_items, items)
-    click.echo('Removed {} item{}'.format(count, '' if count == 1 else 's') + Style.RESET_ALL)
+    click.echo('Removed {} item{}'.format(Fore.GREEN + str(count) + Fore.RESET, '' if count == 1 else 's') + Style.RESET_ALL)
 
 if __name__ == '__main__':
     cli()
