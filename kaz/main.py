@@ -5,7 +5,7 @@ import click
 from colorama import Fore, Style
 
 from kaz import item
-from kaz.constants import kaz_home, VERSION
+from kaz.constants import kaz_home, KEY_VALUE_SPACING, VERSION
 from kaz.search import search
 from kaz.util import echo_error
 
@@ -31,14 +31,23 @@ def ls(pattern=None):
 
     items = item.load()
     if items:
+        if len(items) == 0:
+            return
         if pattern is not None:
             # Search for keys that match pattern
             items = search(items, pattern)
-        lines = ['{}{}'.format(name, Style.DIM + ' (binary)' + Style.NORMAL if type(value) is bytes else '') for name, value in items.items()]
+        max_len = max([len(key) for key in items])
+        def spacing(name):
+            return (max_len - len(name)) + KEY_VALUE_SPACING
+        def format_value(value):
+            if type(value) is bytes:
+                return Style.DIM + '(binary)' + Style.NORMAL
+            else:
+                return value
+
+        lines = ['{}{}{}'.format(name, ' ' * spacing(name), format_value(value)) for name, value in items.items()]
         lines.sort()
-        # If there are no lines, don't print newline
-        if len(lines) > 0:
-            click.echo('\n'.join(lines))
+        click.echo('\n'.join(lines))
     else:
         click.echo(Style.DIM + 'No items' + Style.NORMAL)
 

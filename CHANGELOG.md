@@ -7,6 +7,7 @@
 
 ### Changed
 - Rename project to 'kaz'.
+- `list` now prints keys and values.
 
 ## [0.3.0] - 2020-07-20
 ### Added
