@@ -117,16 +117,5 @@ def remove(pattern):
     item.save(new_items, items)
     click.echo('Removed {} item{}'.format(count, '' if count == 1 else 's') + Style.RESET_ALL)
 
-@cli.command()
-@click.help_option('-h', '--help')
-def clear():
-    """Remove all items."""
-
-    original_items = item.load()
-    count = len(original_items)
-    count = len(item.load())
-    item.save({}, original_items)
-    click.echo((Style.DIM if count == 0 else '') + 'Removed {} item{}'.format(count, '' if count == 1 else 's') + Style.RESET_ALL)
-
 if __name__ == '__main__':
     cli()

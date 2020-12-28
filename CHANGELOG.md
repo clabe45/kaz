@@ -10,6 +10,9 @@
 - `list` now prints keys and values.
 - Change color scheme.
 
+### Removed
+- `clear` subcommand - use `kaz remove '*'` instead.
+
 ## [0.3.0] - 2020-07-20
 ### Added
 - Color in output.
