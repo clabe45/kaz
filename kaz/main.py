@@ -27,7 +27,7 @@ def cli(ctx):
 @click.help_option('-h', '--help')
 @click.argument('pattern', required=False, autocompletion=autocomplete_name)
 def ls(pattern=None):
-    """Show all held items."""
+    """Show all items that match `pattern`."""
 
     items = item.load()
     if items:
@@ -72,7 +72,7 @@ def get(name):
 @click.argument('name', autocompletion=autocomplete_name)
 @click.argument('value', required=False)
 def set(name, edit, value):
-    """Store a value in an item."""
+    """Bind a name to a value."""
 
     items = item.load()
     original_items = dict(items)
