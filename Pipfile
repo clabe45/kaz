@@ -15,7 +15,7 @@ click = "*"
 colorama = "*"
 
 [requires]
-python_version = "3.7"
+python_version = "3"
 
 [scripts]
 test = "python -m pytest"
