@@ -7,7 +7,7 @@ from colorama import Fore, Style
 from kaz import item
 from kaz.constants import kaz_home, KEY_VALUE_SPACING, VERSION
 from kaz.search import search
-from kaz.util import echo_error
+from kaz.util import echo_error, format_value
 
 def autocomplete_name(ctx, args, incomplete):
     return [name for name in item.load().keys() if name.startswith(incomplete)]
@@ -41,11 +41,6 @@ def ls(pattern=None):
             return Fore.YELLOW + name + Fore.RESET
         def spacing(name):
             return (max_len - len(name)) + KEY_VALUE_SPACING
-        def format_value(value):
-            if type(value) is bytes:
-                return Style.DIM + '(binary)' + Style.NORMAL
-            else:
-                return value
 
         lines = ['{}{}{}'.format(format_name(name), ' ' * spacing(name), format_value(value)) for name, value in items.items()]
         lines.sort()
@@ -93,23 +88,14 @@ def set(name, edit, value):
     items[name] = value
     item.save(items, original_items)
 
-    # Format value
-    if type(value) is str:
-        if '\n' in value or '\r' in value:
-            formatted_value = Style.DIM + '(long text)' + Style.RESET_ALL
-        else:
-            formatted_value = value
-    else:
-        formatted_value = Style.DIM + "(binary)" + Style.RESET_ALL
-
     # Output result
     if old is None:
-        click.echo("Added {} → {}".format(Fore.YELLOW + name + Fore.RESET, formatted_value))
+        click.echo("Added {} → {}".format(Fore.YELLOW + name + Fore.RESET, format_value(value)))
     else:
         if value == old:
             click.echo(Style.DIM + 'No changes made' + Style.NORMAL)
         else:
-            click.echo("Updated {} → {}".format(Fore.YELLOW + name + Fore.RESET, formatted_value))
+            click.echo("Updated {} → {}".format(Fore.YELLOW + name + Fore.RESET, format_value(value)))
 
 @cli.command()
 @click.help_option('-h', '--help')
