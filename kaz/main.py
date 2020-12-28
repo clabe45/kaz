@@ -37,6 +37,8 @@ def ls(pattern=None):
             # Search for keys that match pattern
             items = search(items, pattern)
         max_len = max([len(key) for key in items])
+        def format_name(name):
+            return Fore.YELLOW + name + Fore.RESET
         def spacing(name):
             return (max_len - len(name)) + KEY_VALUE_SPACING
         def format_value(value):
@@ -45,7 +47,7 @@ def ls(pattern=None):
             else:
                 return value
 
-        lines = ['{}{}{}'.format(name, ' ' * spacing(name), format_value(value)) for name, value in items.items()]
+        lines = ['{}{}{}'.format(format_name(name), ' ' * spacing(name), format_value(value)) for name, value in items.items()]
         lines.sort()
         click.echo('\n'.join(lines))
     else:
@@ -91,12 +93,12 @@ def set(name, edit, value):
     items[name] = value
     item.save(items, original_items)
     if old is None:
-        click.echo(Fore.GREEN + "Added '{}'".format(name) + Fore.RESET)
+        click.echo("Added '{}'".format(Fore.YELLOW + name + Fore.RESET))
     else:
         if value == old:
             click.echo(Style.DIM + 'Nothing changed' + Style.NORMAL)
         else:
-            click.echo(Fore.YELLOW + "Updated '{}'".format(name) + Fore.RESET)
+            click.echo("Updated '{}'".format(Fore.YELLOW + name + Fore.RESET))
 
 @cli.command()
 @click.help_option('-h', '--help')
@@ -112,7 +114,7 @@ def remove(name):
 
     del items[name]
     item.save(items, original_items)
-    click.echo(Fore.MAGENTA + "Removed '{}'".format(name) + Fore.RESET)
+    click.echo("Removed '{}'".format(Fore.YELLOW + name + Fore.RESET))
 
 @cli.command()
 @click.help_option('-h', '--help')
@@ -123,7 +125,7 @@ def clear():
     count = len(original_items)
     count = len(item.load())
     item.save({}, original_items)
-    click.echo((Style.DIM if count == 0 else Fore.MAGENTA) + 'Removed {} item{}'.format(count, '' if count == 1 else 's') + Style.RESET_ALL)
+    click.echo((Style.DIM if count == 0 else '') + 'Removed {} item{}'.format(count, '' if count == 1 else 's') + Style.RESET_ALL)
 
 if __name__ == '__main__':
     cli()

@@ -8,6 +8,7 @@
 ### Changed
 - Rename project to 'kaz'.
 - `list` now prints keys and values.
+- Change color scheme.
 
 ## [0.3.0] - 2020-07-20
 ### Added
