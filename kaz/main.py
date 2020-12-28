@@ -95,7 +95,7 @@ def set(name, edit, value):
         click.echo("Added {} → {}".format(Fore.YELLOW + name + Fore.RESET, value))
     else:
         if value == old:
-            click.echo(Style.DIM + 'Nothing changed' + Style.NORMAL)
+            click.echo(Style.DIM + 'No changes made' + Style.NORMAL)
         else:
             click.echo("Updated {} → {}".format(Fore.YELLOW + name + Fore.RESET, value))
 
